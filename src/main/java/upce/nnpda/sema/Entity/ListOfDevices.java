@@ -1,5 +1,7 @@
 package upce.nnpda.sema.Entity;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 import java.util.Set;
 
