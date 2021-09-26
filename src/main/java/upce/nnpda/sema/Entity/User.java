@@ -1,6 +1,7 @@
 package upce.nnpda.sema.Entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,21 @@ public class User {
     private String surname;
     @OneToMany(mappedBy = "id")
     private Set<ListOfDevices> listOfDevices;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User(String firstname, String lastname, String username, String email, String password) {
+        this.name=firstname;
+        this.surname=lastname;
+        this.username=username;
+        this.email=email;
+        this.password=password;
+    }
+
+    public User() {
+
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -76,6 +92,14 @@ public class User {
 
     public void setListOfDevices(Set<ListOfDevices> listOfDevices) {
         this.listOfDevices = listOfDevices;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
 }
