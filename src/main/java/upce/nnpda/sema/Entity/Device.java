@@ -12,8 +12,8 @@ public class Device {
     private Long id;
     @Column(length = 45, nullable = false)
     private String description;
-    @ManyToOne
-    private Type type;
+    @Column(length = 45)
+    private TypeOfSenzor type;
     @ManyToOne
     private Sensor sensor;
     @JsonIgnore
@@ -36,11 +36,11 @@ public class Device {
         this.description = description;
     }
 
-    public Type getType() {
+    public TypeOfSenzor getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(TypeOfSenzor type) {
         this.type = type;
     }
 

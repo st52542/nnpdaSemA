@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface DeviceRepository extends JpaRepository<Device,Long> {
     Optional<Device> findById(Long id);
     List<Device> findAllById(Long id);
-    Optional<Device> findByDescription(String description);
+    Device findByDescription(String description);
     List<Device> findAll();
     void removeDeviceById(Long id);
     void removeDeviceByDescription(String description);
