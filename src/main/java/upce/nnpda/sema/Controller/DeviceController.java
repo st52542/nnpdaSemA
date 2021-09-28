@@ -1,8 +1,10 @@
 package upce.nnpda.sema.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import upce.nnpda.sema.Entity.Device;
 import upce.nnpda.sema.Repository.DeviceRepository;
 
@@ -18,10 +20,5 @@ public class DeviceController {
     @GetMapping(value = {"","/"})
     public List<Device> getProducts() {
         return deviceRepository.findAll();
-    }
-
-    @GetMapping(value = {"/{id}"})
-    public Device getProductByID(@PathVariable(required = false) Long id, Model model) {
-        return deviceRepository.findById(id).get();
     }
 }
