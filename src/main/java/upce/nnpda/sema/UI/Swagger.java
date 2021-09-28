@@ -1,30 +1,47 @@
 package upce.nnpda.sema.UI;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-
-import com.google.common.base.Predicates;
-
-import io.swagger.annotations.SwaggerDefinition;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration
+import java.util.Collections;
+import java.util.List;
+
 @EnableSwagger2
+@Configuration
 class SwaggerConfig {
+
     @Bean
-
-    public Docket api(){
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot"))).build();
-
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .securityContexts(Collections.singletonList(securityContext()))
+                .securitySchemes(Collections.singletonList(apiKey()))
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("upce.nnpda.sema"))
+                .paths(PathSelectors.any())
+                .build();
     }
 
-    public void addResouceHandler(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+    private ApiKey apiKey() {
+        return new ApiKey("JWT", "Authorization", "header");
     }
 
+    private SecurityContext securityContext() {
+        return SecurityContext.builder().securityReferences(defaultAuth()).build();
+    }
+
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return Collections.singletonList(new SecurityReference("JWT", authorizationScopes));
+    }
 }

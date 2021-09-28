@@ -22,6 +22,17 @@ public class User {
     @OneToMany(mappedBy = "id")
     private Set<ListOfDevices> listOfDevices;
 
+    public User(String firstname, String lastname, String username, String email, String encode) {
+        this.name = firstname;
+        this.surname = lastname;
+        this.email = email;
+        this.password = encode;
+        this.username = username;
+    }
+    public User() {
+
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

@@ -1,5 +1,7 @@
 package upce.nnpda.sema.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ public class Device {
     private Type type;
     @ManyToOne
     private Sensor sensor;
+    @JsonIgnore
     @OneToMany(mappedBy = "id")
     private Set<ListOfDevices> listOfDevices;
 
