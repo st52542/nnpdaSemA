@@ -8,10 +8,10 @@ public class Sensor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 45, nullable = false)
+    @Column(length = 45, nullable = false,unique = true)
     private String description;
-    @OneToMany(mappedBy = "id")
-    private Set<Device> device;
+    @ManyToOne
+    private Device device;
 
     public void setId(Long id) {
         this.id = id;
@@ -29,11 +29,11 @@ public class Sensor {
         this.description = description;
     }
 
-    public Set<Device> getDevice() {
+    public Device getDevice() {
         return device;
     }
 
-    public void setDevice(Set<Device> device) {
+    public void setDevice(Device device) {
         this.device = device;
     }
 

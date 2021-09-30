@@ -3,7 +3,7 @@ package upce.nnpda.sema.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import upce.nnpda.sema.DTO.AddDevice;
+import upce.nnpda.sema.DTO.AddDeviceDTO;
 import upce.nnpda.sema.Entity.Device;
 import upce.nnpda.sema.Entity.ListOfDevices;
 import upce.nnpda.sema.Entity.User;
@@ -30,8 +30,7 @@ public class DeviceController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    @GetMapping(value = {"","/"})
-    public List<Optional<Device>> getDevices(@RequestBody Authentication authentication) {
+    public List<Optional<Device>> getDevices(Authentication authentication) {
         Optional<User> user = userRepository.findByUsername(authentication.getName());
         List<ListOfDevices> listOfDevices = listOfDevicesRepository.findAllByUserId(user.get().getId());
         List<Optional<Device>> deviceList = new ArrayList<>();
@@ -40,8 +39,7 @@ public class DeviceController {
     }
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    @PostMapping(value = {"","/"})
-    public Device addDevice(@RequestBody Authentication authentication, AddDevice device) {
+    public Device addDevice(Authentication authentication,@RequestBody AddDeviceDTO device) {
         Optional<User> user = userRepository.findByUsername(authentication.getName());
         Device addDevice = new Device();
         addDevice.setType(device.getType());

@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import upce.nnpda.sema.DTO.NewPasswordDTO;
+import upce.nnpda.sema.DTO.ChangePasswordDTO;
 import upce.nnpda.sema.Entity.User;
 import upce.nnpda.sema.Repository.UserRepository;
 import upce.nnpda.sema.Security.jwt.JwtProvider;
@@ -20,8 +22,7 @@ import upce.nnpda.sema.message.response.ResponseMessage;
 
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -77,5 +78,26 @@ public class AuthRestAPIs {
         userRepository.save(user);
 
         return new ResponseEntity<>(new ResponseMessage("User "+ signUpRequest.getFirstname() + " is registered successfully!"), HttpStatus.OK);
+    }
+
+    @PostMapping("/newpassword")
+    public String newPassword(Authentication authentication, @RequestBody NewPasswordDTO newPasswordDTO) {
+        Optional<User> user = userRepository.findByUsername(authentication.getName());
+        if (user!=null) {
+            user.get().setPassword(encoder.encode(newPasswordDTO.getPassword()));
+            userRepository.save(user.get());
+            return "OK";
+        }
+        return null;
+    }
+    @PostMapping("/changepassword")
+    public String setPassword(Authentication authentication, @RequestBody ChangePasswordDTO changePasswordDTO) {
+        Optional<User> user = userRepository.findByUsername(authentication.getName());
+        if (encoder.matches(changePasswordDTO.getOldPassword(),user.get().getPassword())) {
+            user.get().setPassword(encoder.encode(changePasswordDTO.getNewPassword()));
+            userRepository.save(user.get());
+            return "OK";
+        }
+        return null;
     }
 }

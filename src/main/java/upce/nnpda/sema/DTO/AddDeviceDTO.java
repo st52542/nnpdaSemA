@@ -2,9 +2,7 @@ package upce.nnpda.sema.DTO;
 
 import upce.nnpda.sema.Entity.TypeOfSenzor;
 
-import javax.persistence.Column;
-
-public class AddDevice {
+public class AddDeviceDTO {
     private String description;
     private TypeOfSenzor type;
 
