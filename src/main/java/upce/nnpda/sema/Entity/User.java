@@ -19,6 +19,8 @@ public class User {
     private String name;
     @Column(length = 45, nullable = false)
     private String surname;
+    @Column(length = 200)
+    private String uuid;
     @OneToMany(mappedBy = "id")
     private Set<ListOfDevices> listOfDevices;
 
@@ -87,6 +89,15 @@ public class User {
 
     public void setListOfDevices(Set<ListOfDevices> listOfDevices) {
         this.listOfDevices = listOfDevices;
+    }
+
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
 }
