@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-import upce.nnpda.sema.Security.services.UserPrinciple;
+import upce.nnpda.sema.Service.UserPrinciple;
 
 import java.util.Date;
 

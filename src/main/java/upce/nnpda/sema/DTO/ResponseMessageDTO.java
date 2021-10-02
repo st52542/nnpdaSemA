@@ -1,9 +1,9 @@
-package upce.nnpda.sema.message.response;
+package upce.nnpda.sema.DTO;
 
-public class ResponseMessage {
+public class ResponseMessageDTO {
     private String message;
 
-    public ResponseMessage(String message) {
+    public ResponseMessageDTO(String message) {
         this.message = message;
     }
 

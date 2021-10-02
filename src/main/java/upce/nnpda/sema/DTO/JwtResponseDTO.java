@@ -1,16 +1,16 @@
-package upce.nnpda.sema.message.response;
+package upce.nnpda.sema.DTO;
 
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
-public class JwtResponse {
+public class JwtResponseDTO {
     private String token;
     private String type = "Bearer";
     private String username;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtResponse(String accessToken, String username, Collection<? extends GrantedAuthority> authorities) {
+    public JwtResponseDTO(String accessToken, String username, Collection<? extends GrantedAuthority> authorities) {
         this.token = accessToken;
         this.username = username;
         this.authorities = authorities;

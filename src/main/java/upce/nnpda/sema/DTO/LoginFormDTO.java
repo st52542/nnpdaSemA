@@ -1,8 +1,8 @@
-package upce.nnpda.sema.message.request;
+package upce.nnpda.sema.DTO;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class LoginForm {
+public class LoginFormDTO {
     @NotBlank
     @Size(min=3, max = 60)
     private String username;

@@ -1,4 +1,4 @@
-package upce.nnpda.sema.Security.services;
+package upce.nnpda.sema.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

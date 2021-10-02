@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import upce.nnpda.sema.Security.jwt.JwtAuthEntryPoint;
 import upce.nnpda.sema.Security.jwt.JwtAuthTokenFilter;
-import upce.nnpda.sema.Security.services.UserDetailsServiceImpl;
+import upce.nnpda.sema.Service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
