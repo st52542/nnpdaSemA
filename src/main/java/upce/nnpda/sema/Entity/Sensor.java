@@ -10,6 +10,8 @@ public class Sensor {
     private Long id;
     @Column(length = 45, nullable = false,unique = true)
     private String description;
+    @Column(length = 45)
+    private TypeOfSenzor type;
     @ManyToOne
     private Device device;
 
@@ -37,4 +39,11 @@ public class Sensor {
         this.device = device;
     }
 
+    public TypeOfSenzor getType() {
+        return type;
+    }
+
+    public void setType(TypeOfSenzor type) {
+        this.type = type;
+    }
 }

@@ -12,8 +12,6 @@ public class Device {
     private Long id;
     @Column(length = 45, nullable = false,unique = true)
     private String description;
-    @Column(length = 45)
-    private TypeOfSenzor type;
     @JsonIgnore
     @OneToMany(mappedBy = "id")
     private Set<ListOfDevices> listOfDevices;
@@ -32,14 +30,6 @@ public class Device {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public TypeOfSenzor getType() {
-        return type;
-    }
-
-    public void setType(TypeOfSenzor type) {
-        this.type = type;
     }
 
     public Set<ListOfDevices> getListOfDevices() {
