@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpFormDTO signUpRequest) throws AddressException {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpFormDTO signUpRequest){
         try {
             return userService.registerUser(signUpRequest);
         }catch (Exception e){
@@ -73,7 +73,7 @@ public class UserController {
         return "mail send";
     }
     @PostMapping("/resetpasswordtoken")
-    public String resetPasswordToken(@RequestBody ResetPasswordTokenDTO resetPasswordTokenDTO) throws Exception {
+    public String resetPasswordToken(@RequestBody ResetPasswordTokenDTO resetPasswordTokenDTO) {
         try {
             userService.resetPasswordToken(resetPasswordTokenDTO);
         }catch (Exception e){
