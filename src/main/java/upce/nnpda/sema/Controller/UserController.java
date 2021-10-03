@@ -49,7 +49,7 @@ public class UserController {
         }catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        return "Done";
+        return "password change";
     }
     @PostMapping("/changepassword")
     public String setPassword(Authentication authentication, @RequestBody ChangePasswordDTO changePasswordDTO) {
@@ -58,7 +58,7 @@ public class UserController {
         }catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        return "Done";
+        return "password change";
     }
 
     @PostMapping("/resetpasswordsend")
