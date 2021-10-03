@@ -1,7 +1,6 @@
 package upce.nnpda.sema.Service;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestBody;
 import upce.nnpda.sema.DTO.AddSensorDTO;
 import upce.nnpda.sema.DTO.DeviceDTO;
 import upce.nnpda.sema.Entity.Sensor;

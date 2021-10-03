@@ -14,8 +14,6 @@ import upce.nnpda.sema.Service.UserService;
 import upce.nnpda.sema.DTO.LoginFormDTO;
 import upce.nnpda.sema.DTO.SignUpFormDTO;
 
-
-import javax.mail.internet.AddressException;
 import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)

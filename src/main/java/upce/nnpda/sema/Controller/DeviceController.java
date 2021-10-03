@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import upce.nnpda.sema.DTO.AddDeviceDTO;
 import upce.nnpda.sema.Entity.Device;
-import upce.nnpda.sema.Repository.DeviceRepository;
-import upce.nnpda.sema.Repository.ListOfDevicesRepository;
-import upce.nnpda.sema.Repository.UserRepository;
+
 import upce.nnpda.sema.Service.DeviceService;
 
 import java.util.List;
@@ -34,7 +32,6 @@ public class DeviceController {
     }
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    @GetMapping(value = {"","/"})
     public Device addDevice(Authentication authentication,@RequestBody AddDeviceDTO device) {
         try {
             return deviceService.addDevice(authentication,device);

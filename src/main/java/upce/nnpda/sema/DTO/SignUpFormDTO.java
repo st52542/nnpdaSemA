@@ -1,7 +1,6 @@
 package upce.nnpda.sema.DTO;
 
 import javax.validation.constraints.*;
-import java.util.Set;
 
 public class SignUpFormDTO {
     @NotBlank
