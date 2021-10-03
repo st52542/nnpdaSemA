@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import upce.nnpda.sema.DTO.NewPasswordDTO;
 import upce.nnpda.sema.DTO.ChangePasswordDTO;
 import upce.nnpda.sema.DTO.ResetPasswordSendDTO;
 import upce.nnpda.sema.DTO.ResetPasswordTokenDTO;
@@ -42,15 +41,6 @@ public class UserController {
         }
     }
 
-    @PostMapping("/newpassword")
-    public String newPassword(Authentication authentication, @RequestBody NewPasswordDTO newPasswordDTO) {
-        try {
-            userService.newPassword(authentication, newPasswordDTO);
-        }catch (Exception e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
-        return "password change";
-    }
     @PostMapping("/changepassword")
     public String setPassword(Authentication authentication, @RequestBody ChangePasswordDTO changePasswordDTO) {
         try {

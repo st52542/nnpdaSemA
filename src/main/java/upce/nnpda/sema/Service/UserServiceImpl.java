@@ -99,19 +99,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void newPassword(Authentication authentication, NewPasswordDTO newPasswordDTO) throws Exception {
-        Optional<User> user = userRepository.findByUsername(authentication.getName());
-        if (user!=null) {
-            user.get().setPassword(encoder.encode(newPasswordDTO.getPassword()));
-            userRepository.save(user.get());
-        }else {
-            throw new Exception();
-        }
-    }
-
-    @Override
     public ResponseEntity<?> authenticateUser(LoginFormDTO loginRequest) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        UsernamePasswordAuthenticationToken test = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
+        Authentication authentication = authenticationManager.authenticate(test);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateJwtToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
