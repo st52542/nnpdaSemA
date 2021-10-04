@@ -41,7 +41,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/changepassword")
+    @PutMapping("/changepassword")
     public String setPassword(Authentication authentication, @RequestBody ChangePasswordDTO changePasswordDTO) {
         try {
             userService.setPassword(authentication, changePasswordDTO);
@@ -51,7 +51,7 @@ public class UserController {
         return "password change";
     }
 
-    @PostMapping("/resetpasswordsend")
+    @GetMapping("/resetpasswordsend")
     public String resetPasswordSend(@RequestBody ResetPasswordSendDTO resetPasswordSendDTO) {
         try {
             userService.resetPasswordSend(resetPasswordSendDTO);
@@ -60,7 +60,7 @@ public class UserController {
         }
         return "mail send";
     }
-    @PostMapping("/resetpasswordtoken")
+    @PutMapping("/resetpasswordtoken")
     public String resetPasswordToken(@RequestBody ResetPasswordTokenDTO resetPasswordTokenDTO) {
         try {
             userService.resetPasswordToken(resetPasswordTokenDTO);
