@@ -1,7 +1,7 @@
 package upce.nnpda.sema.DTO;
 
 public class ChangePasswordDTO {
-    private String oldPassword;
+    private String oldPassword ;
     private String newPassword;
 
     public String getOldPassword() {
